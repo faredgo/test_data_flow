@@ -1,0 +1,9 @@
+filename: 'mock_{{.InterfaceName | snakecase }}.go'
+with-expecter: True
+dir: testmocks/{{ replaceAll .InterfaceDirRelative "internal" "internal_" }}
+mockname: 'Mock{{.InterfaceName}}'
+outpkg: 'mock{{.PackageName}}'
+packages:
+  test_data_flow/pkg/di:
+    config:
+      all: true
