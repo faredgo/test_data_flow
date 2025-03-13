@@ -72,5 +72,8 @@ func main() {
 	}
 
 	log.Printf("Server is listening on port: %s\n", cfg.SERVER_PORT)
-	server.ListenAndServe()
+
+	if err := server.ListenAndServeTLS("zhttps/cert.pem", "zhttps/key.pem"); err != nil {
+		log.Fatalf("Failed to start HTTPS server: %v", err)
+	}
 }
